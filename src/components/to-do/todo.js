@@ -67,6 +67,12 @@ const Todo = () => {
         localStorage.setItem("myTodos", JSON.stringify(items));
     }, [items]);
 
+    const handleKeyPress = (event) =>{
+        if (event.key === 'Enter'){
+            addItems();
+        }
+    }
+
 
 
 
@@ -79,7 +85,8 @@ const Todo = () => {
                         <figcaption>Add your TODO list 💗</figcaption>
                     </figure>
                     <div className="addItems">
-                        <input type="text" placeholder="Add your Item here💕" className='form-control' value={inputdata} onChange={(event) => setInputdata(event.target.value)} />
+                        <input type="text" placeholder="Add your Item here💕" className='form-control' value={inputdata} onChange={(event) => setInputdata(event.target.value)} 
+                        onKeyDown={handleKeyPress}/>
                         {toggleButtton ? <i className="far fa-edit add-btn" onClick={addItems}></i> : <i className="fa fa-plus add-btn" onClick={addItems}></i>}
                        
                     </div>
